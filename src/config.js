@@ -20,6 +20,7 @@ let config = {
     dev: {
       azureContainer: "$web",
       azureBlob: "importmap.json",
+      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING,
       azureAccount: process.env.AZURE_STORAGE_ACCOUNT,
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY,
     },
