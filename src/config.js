@@ -8,7 +8,23 @@ if (argv._.length > 1)
     `sofe-deplanifester expects only a single argument, which is the configuration file`
   );
 
-let config = {};
+let config = {
+  urlSafeList: [
+    "https://unpkg.com/",
+    "https://pkgs.dev.azure.com/if-it/Baltics/_packaging/baltic/npm/registry/",
+  ],
+  manifestFormat: "importmap",
+  username: "admin",
+  password: process.env.IMPORT_MAP_DEPLOYER_PASSWORD,
+  locations: {
+    dev: {
+      azureContainer: "$web",
+      azureBlob: "importmap.json",
+      azureAccount: process.env.AZURE_STORAGE_ACCOUNT,
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY,
+    },
+  },
+};
 if (argv._.length === 1) {
   config = require(path.join(process.cwd(), argv._[0]));
 }

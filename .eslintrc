@@ -2,6 +2,7 @@
   "extends": ["node-important-stuff", "plugin:prettier/recommended"],
   "rules": {
     "node/no-unpublished-require": "off",
-    "node/no-missing-require": "off"
+    "node/no-missing-require": "off",
+    "parserOptions": { "requireConfigFile" : "false" }
   }
 }
