@@ -19,11 +19,25 @@ let config = {
   locations: {
     dev: {
       azureContainer: "$web",
-      azureBlob: "importmap.json",
-      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING,
-      azureAccount: process.env.AZURE_STORAGE_ACCOUNT,
-      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY,
+      azureBlob: "importmap/dev/importmap.json",
+      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_DEV,
+      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_DEV,
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     },
+    stag: {
+      azureContainer: "$web",
+      azureBlob: "importmap/stag/importmap.json",
+      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_DEV,
+      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_DEV,
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
+    },
+    prod: {
+      azureContainer: "$web",
+      azureBlob: "importmap/prod/importmap.json",
+      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_PROD,
+      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_PROD,
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
+    }
   },
 };
 if (argv._.length === 1) {
