@@ -17,25 +17,22 @@ let config = {
   username: "admin",
   password: process.env.IMPORT_MAP_DEPLOYER_PASSWORD,
   locations: {
-    dev: {
+    "app-dev": {
       azureContainer: "$web",
-      azureBlob: "importmap/dev/importmap.json",
-      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_DEV,
-      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_DEV,
+      azureBlob: "importmap/app-dev/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     },
-    stag: {
+    "app-stag": {
       azureContainer: "$web",
-      azureBlob: "importmap/stag/importmap.json",
-      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_DEV,
-      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_DEV,
+      azureBlob: "importmap/app-stag/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     },
-    prod: {
+    "app-prod": {
       azureContainer: "$web",
-      azureBlob: "importmap/prod/importmap.json",
-      azureConnectionString: process.env.AZURE_STORAGE_ACCOUNT_CONN_STRING_PROD,
-      azureAccount: process.env.AZURE_STORAGE_ACCOUNT_PROD,
+      azureBlob: "importmap/app-prod/importmap.json",
+      azureAccount: "nginxstaticstoreprod",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
     }
   },
