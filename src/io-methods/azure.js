@@ -12,6 +12,11 @@ async function createBlobService(target) {
   const account = target.azureAccount || process.env.AZURE_STORAGE_ACCOUNT;
   const accessKey =
     target.azureAccessKey || process.env.AZURE_STORAGE_ACCESS_KEY;
+
+  console.log("con: " + connectionString);
+  console.log("account: " + account);
+  console.log("accessKey: " + accessKey);
+
   if (connectionString) {
     return await BlobServiceClient.fromConnectionString(connectionString);
   } else if (account && accessKey) {
