@@ -5,7 +5,6 @@ resources:
     - repository: build-pipelines
       type: git
       name: Baltics/build-pipelines
-      ref: refs/heads/feature/docker-build
 
 stages:
   - template: templates/docker-build.yml@build-pipelines
