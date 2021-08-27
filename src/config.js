@@ -11,7 +11,7 @@ if (argv._.length > 1)
 let config = {
   urlSafeList: [
     "https://unpkg.com",
-    "https://importmap.balticit.ifint.biz",
+    "https://swarm.balticit.ifint.biz",
     "https://nginxstaticstorepdev.z6.web.core.windows.net",
     "https://nginxstaticstoreprod.z6.web.core.windows.net",
   ],
