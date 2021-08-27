@@ -10,8 +10,9 @@ if (argv._.length > 1)
 
 let config = {
   urlSafeList: [
-    "https://unpkg.com/",
-    "https://pkgs.dev.azure.com/if-it/Baltics/_packaging/baltic/npm/registry/",
+    "https://importmap.balticit.ifint.biz",
+    "https://nginxstaticstorepdev.z6.web.core.windows.net",
+    "https://nginxstaticstoreprod.z6.web.core.windows.net",
   ],
   manifestFormat: "importmap",
   username: "admin",
