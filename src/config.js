@@ -19,15 +19,15 @@ let config = {
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     },
-    "app-stag": {
+    "app-stage": {
       azureContainer: "$web",
-      azureBlob: "importmap/app-stag/importmap.json",
+      azureBlob: "importmap/app-stage/importmap.json",
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     },
-    "app-prod": {
+    "app": {
       azureContainer: "$web",
-      azureBlob: "importmap/app-prod/importmap.json",
+      azureBlob: "importmap/app/importmap.json",
       azureAccount: "nginxstaticstoreprod",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
     }
