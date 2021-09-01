@@ -8,29 +8,43 @@ if (argv._.length > 1)
     `sofe-deplanifester expects only a single argument, which is the configuration file`
   );
 
+function createLocations(site) {
+  const devLocation = site + "-dev";
+  const stageLocation = site + "-stage";
+  const prodLocation = site;
+
+  return {
+    devLocation: {
+      azureContainer: "$web",
+      azureBlob: "importmap/" + devLocation + "/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
+    },
+    stageLocation: {
+      azureContainer: "$web",
+      azureBlob: "importmap/" + stageLocation + "/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
+    },
+    prodLocation: {
+      azureContainer: "$web",
+      azureBlob: "importmap/" + prodLocation + "/importmap.json",
+      azureAccount: "nginxstaticstoreprod",
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
+    }
+  }
+}
+
+const appLocations = createLocations("app");
+const swarmLocations = createLocations("swarm");
+
 let config = {
   manifestFormat: "importmap",
   username: "admin",
   password: process.env.IMPORT_MAP_DEPLOYER_PASSWORD,
   locations: {
-    "app-dev": {
-      azureContainer: "$web",
-      azureBlob: "importmap/app-dev/importmap.json",
-      azureAccount: "nginxstaticstorepdev",
-      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
-    },
-    "app-stage": {
-      azureContainer: "$web",
-      azureBlob: "importmap/app-stage/importmap.json",
-      azureAccount: "nginxstaticstorepdev",
-      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
-    },
-    "app": {
-      azureContainer: "$web",
-      azureBlob: "importmap/app/importmap.json",
-      azureAccount: "nginxstaticstoreprod",
-      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
-    }
+    appLocations,
+    swarmLocations
   },
 };
 if (argv._.length === 1) {
