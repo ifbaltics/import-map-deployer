@@ -8,45 +8,47 @@ if (argv._.length > 1)
     `sofe-deplanifester expects only a single argument, which is the configuration file`
   );
 
-function createLocations(site) {
-  const devLocation = site + "-dev";
-  const stageLocation = site + "-stage";
-  const prodLocation = site;
+function createLocations(sites) {
+  let locations = {}
+  sites.forEach(site => {
+    const devLocation = site + "-dev";
+    const stageLocation = site + "-stage";
+    const prodLocation = site;
 
-  return {
-    devLocation: {
+    locations[devLocation] = {
       azureContainer: "$web",
       azureBlob: "importmap/" + devLocation + "/importmap.json",
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
-    },
-    stageLocation: {
+    }
+    locations[stageLocation] = {
       azureContainer: "$web",
       azureBlob: "importmap/" + stageLocation + "/importmap.json",
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
-    },
-    prodLocation: {
+    }
+    locations[prodLocation] = {
       azureContainer: "$web",
       azureBlob: "importmap/" + prodLocation + "/importmap.json",
-      azureAccount: "nginxstaticstoreprod",
+      azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
     }
-  }
+  });
+
+  return locations;
 }
 
-const appLocations = createLocations("app");
-const swarmLocations = createLocations("swarm");
+const locations = createLocations(["app", "swarm"]);
+
+console.log(locations);
 
 let config = {
   manifestFormat: "importmap",
   username: "admin",
   password: process.env.IMPORT_MAP_DEPLOYER_PASSWORD,
-  locations: {
-    appLocations,
-    swarmLocations
-  },
+  locations
 };
+
 if (argv._.length === 1) {
   config = require(path.join(process.cwd(), argv._[0]));
 }
