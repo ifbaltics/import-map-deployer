@@ -30,7 +30,7 @@ function createLocations(sites) {
     locations[prodLocation] = {
       azureContainer: "$web",
       azureBlob: "importmap/" + prodLocation + "/importmap.json",
-      azureAccount: "nginxstaticstorepdev",
+      azureAccount: "nginxstaticstoreprod",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_PROD,
     }
   });
@@ -39,8 +39,6 @@ function createLocations(sites) {
 }
 
 const locations = createLocations(["app", "swarm"]);
-
-console.log(locations);
 
 let config = {
   manifestFormat: "importmap",
