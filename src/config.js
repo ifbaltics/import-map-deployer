@@ -11,13 +11,27 @@ if (argv._.length > 1)
 function createLocations(sites) {
   let locations = {}
   sites.forEach(site => {
+    const autoLocation = site + "-auto";
     const devLocation = site + "-dev";
+    const dev2Location = site + "-dev2";
     const stageLocation = site + "-stage";
     const prodLocation = site;
 
+    locations[autoLocation] = {
+      azureContainer: "$web",
+      azureBlob: "importmap/" + autoLocation + "/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
+    }
     locations[devLocation] = {
       azureContainer: "$web",
       azureBlob: "importmap/" + devLocation + "/importmap.json",
+      azureAccount: "nginxstaticstorepdev",
+      azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
+    }
+    locations[dev2Location] = {
+      azureContainer: "$web",
+      azureBlob: "importmap/" + dev2Location + "/importmap.json",
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     }
