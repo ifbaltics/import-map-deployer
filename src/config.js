@@ -13,7 +13,7 @@ function createLocations(sites) {
   sites.forEach(site => {
     const autoLocation = site + "-auto";
     const devLocation = site + "-dev";
-    const dev2Location = site + "-test";
+    const testLocation = site + "-test";
     const stageLocation = site + "-stage";
     const prodLocation = site;
 
@@ -29,9 +29,9 @@ function createLocations(sites) {
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     }
-    locations[dev2Location] = {
+    locations[testLocation] = {
       azureContainer: "$web",
-      azureBlob: "importmap/" + dev2Location + "/importmap.json",
+      azureBlob: "importmap/" + testLocation + "/importmap.json",
       azureAccount: "nginxstaticstorepdev",
       azureAccessKey: process.env.AZURE_STORAGE_ACCOUNT_KEY_DEV,
     }
