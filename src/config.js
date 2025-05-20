@@ -13,7 +13,7 @@ function createLocations(sites) {
   sites.forEach(site => {
     const autoLocation = site + "-auto";
     const devLocation = site + "-dev";
-    const dev2Location = site + "-dev2";
+    const dev2Location = site + "-test";
     const stageLocation = site + "-stage";
     const prodLocation = site;
 
