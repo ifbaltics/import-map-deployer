@@ -52,7 +52,7 @@ function createLocations(sites) {
   return locations;
 }
 
-const locations = createLocations(["app", "swarm"]);
+const locations = createLocations(["app", "swarm", "self-service"]);
 
 let config = {
   manifestFormat: "importmap",
